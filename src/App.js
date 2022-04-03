@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import ListNicknames from "./ListNicknames";
 
 function App() {
+  const [order, setOrder] = useState("ASC");
+  const handleClick = (a) => {
+    setOrder(a);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <ListNicknames
+        names={[
+          "Triviño TI",
+          "Homer Dev",
+          " ",
+          " Ragnar Front",
+          "Loki UX",
+          " ",
+        ]}
+        order={order}
+      />
+      <button onClick={() => handleClick("ASC")}>ASC</button>
+      <button onClick={() => handleClick("DESC")}>DESC</button>
     </div>
   );
 }
